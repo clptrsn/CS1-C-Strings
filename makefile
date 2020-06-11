@@ -9,15 +9,15 @@ CCFLAGS = -lm -Iinclude -std=c99
 all: horse
 
 horse: main.o gameFunctions.o
-	$(CC) $(CCFLAGS) obj/main.o obj/gameFunctions.o -o horse
+	$(CC) obj/main.o obj/gameFunctions.o -o horse $(CCFLAGS)
 
 main.o: src/main.c 
 	@mkdir -p obj
-	$(CC) $(CCFLAGS) -c src/main.c -o obj/$@
+	$(CC) -c src/main.c -o obj/$@ $(CCFLAGS)
 
 gameFunctions.o: src/gameFunctions.c include/gameFunctions.h
 	@mkdir -p obj
-	$(CC) $(CCFLAGS) -c src/gameFunctions.c -o obj/$@
+	$(CC) -c src/gameFunctions.c -o obj/$@ $(CCFLAGS)
 
 clean:
 	rm -rf obj/*o memLeak
